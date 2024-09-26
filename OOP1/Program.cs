@@ -13,8 +13,8 @@ namespace OOP1
             Dice dice = new Dice();
             Random rand = new Random();
 
-            Player hero = new Player("siegfried", 50);
-            Player enemy = new Player("Fafnir", 50);
+            Player hero = new Player("siegfried", 50, 20, 20);
+            Player enemy = new Player("Fafnir", 50, 25, 15);
 
             game.Encounter(hero, enemy, dice);
 

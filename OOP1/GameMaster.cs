@@ -19,7 +19,7 @@ namespace OOP1
             //Player enemy = new Player("Fafnir", 50);
 
 
-            Console.WriteLine($"{playerOne._playername} encounters {playerTwo._playername}: What shall he do?");
+            Console.WriteLine($"{playerOne.GetName()} encounters {playerTwo.GetName()}: What shall he do?");
             Console.WriteLine("1. Attack");
             Console.WriteLine("2. Run");
             string choice = Console.ReadLine().ToLower();
@@ -31,7 +31,7 @@ namespace OOP1
             }
             else
             {
-                Console.WriteLine($"You tried to run away, but {playerTwo._playername} won't allow it!");
+                Console.WriteLine($"You tried to run away, but {playerTwo.GetName()} won't allow it!");
                 Fight(playerOne, playerTwo, dice);
             }
 
@@ -43,9 +43,9 @@ namespace OOP1
 
             Random rand = new Random();
 
-            Console.WriteLine(x._playername + " and " + y._playername + " finally faced off!");
-            Console.WriteLine(x._playername + ": You shall taste my steel, monster!");
-            Console.WriteLine(y._playername + ": *Homicidal roar*");
+            Console.WriteLine(x.GetName() + " and " + y.GetName() + " finally faced off!");
+            Console.WriteLine(x.GetName() + ": You shall taste my steel, monster!");
+            Console.WriteLine(y.GetName() + ": *Homicidal roar*");
 
             do
             {
@@ -55,12 +55,12 @@ namespace OOP1
                 int enemyattack = z.RollDice(rand.Next(1, 3));
                 if (heroTurn)
                 {
-                    Console.WriteLine("It's " + x._playername + "'s turn!\n");
-                    Console.WriteLine($"You have {x._health} health remaining.");
+                    Console.WriteLine("It's " + x.GetName() + "'s turn!\n");
+                    Console.WriteLine($"You have {x.GetHealth()} health remaining.");
                     Console.WriteLine("Press any key to roll the dice to determine the damage!");
                     Console.ReadLine();
                     y.UpdateHealth(-heroattack);
-                    Console.WriteLine("You dealt " + heroattack + " damage to " + y._playername + "!");
+                    Console.WriteLine("You dealt " + heroattack + " damage to " + y.GetName() + "!");
                     Console.ReadLine();
 
                     heroTurn = false;
@@ -69,10 +69,10 @@ namespace OOP1
 
                 if (enemyTurn)
                 {
-                    Console.WriteLine("It's " + y._playername + "'s turn!");
-                    Console.WriteLine($"The enemy have {y._health} health remaining.");
+                    Console.WriteLine("It's " + y.GetName() + "'s turn!");
+                    Console.WriteLine($"The enemy have {y.GetHealth()} health remaining.");
                     x.UpdateHealth(-enemyattack);
-                    Console.WriteLine(y._playername + " dealt " + enemyattack + " damage to " + x._playername + "!");
+                    Console.WriteLine(y.GetName() + " dealt " + enemyattack + " damage to " + x.GetName() + "!");
                     Console.ReadLine();
 
                     heroTurn = true;
@@ -83,18 +83,18 @@ namespace OOP1
 
             if (x.IsDead() && y.IsDead())
             {
-                Console.WriteLine(y._playername + " and " + x._playername + "both died ....... BOOO");
+                Console.WriteLine(y.GetName() + " and " + x.GetName() + "both died ....... BOOO");
             }
             else if (x.IsDead())
             {
                 y.Level(10);
-                Console.WriteLine($"{y._playername} kills {x._playername}. {y._playername} gains 10 exp. They have total of: {y._experience} exp.");
+                Console.WriteLine($"{y.GetName()} kills {x.GetName()}. {y.GetName()} gains 10 exp. They have total of: {y._experience} exp.");
 
             }
             else
             {
                 x.Level(10);
-                Console.WriteLine($"{x._playername} kills {y._playername}. {x._playername} gains 10 exp. They have total of: {x._experience} exp.");
+                Console.WriteLine($"{x.GetName()} kills {y.GetName()}. {x.GetName()} gains 10 exp. They have total of: {x._experience} exp.");
 
             }
         }

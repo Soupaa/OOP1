@@ -6,24 +6,21 @@ using System.Threading.Tasks;
 
 namespace OOP1
 {
-    internal class Player
+    internal class Player : Character
     {
         //fields
-        public string _playername { get; private set; }
-        public int _health { get; private set; }
         public int _level { get; private set; }
         public int _armor { get; private set; }
         public double _experience { get; private set; }
         public double _experiencebar { get; private set; }
 
-        public Player(string startingplayername, int startinghealth)
+        public Player(string name, int health, int strength, int armor)
+            : base(name, health, strength)
         {
-            this._playername = startingplayername;
-            this._health = startinghealth;
-            _level = 1;
-            _armor = 0;
-            _experience = 0;
-            _experiencebar = 100;
+            this._level = 1;
+            this._armor = 0;
+            this._experience = 0;
+            this._experiencebar = 100;
         }
 
         //method
@@ -43,10 +40,9 @@ namespace OOP1
             }
 
         }
-
-        public void UpdateHealth(int value)
+        public override void UpdateHealth(int value)
         {
-            _health += value; 
+            _health += value + _level;
         }
 
         public int ArmorProtection(int damage)
